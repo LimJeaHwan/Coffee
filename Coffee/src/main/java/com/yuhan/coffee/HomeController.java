@@ -25,7 +25,7 @@ public class HomeController {
 	@RequestMapping(value = "/menu/list", method = RequestMethod.GET)
 	public String menu(Model model)
 	{
-		String str ="메뉴리스트";
+		String str ="메뉴";
 		
 		model.addAttribute("menu", str);
 		return "menu/menu";
