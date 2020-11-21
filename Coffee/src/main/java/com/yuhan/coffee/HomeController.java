@@ -28,7 +28,7 @@ public class HomeController {
 		String str ="¸Þ´º";
 		
 		model.addAttribute("menu", str);
-		return "menu/list";
+		return "menu/menu";
 	}
 	
 }
