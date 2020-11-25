@@ -3,6 +3,7 @@
 
 #ignore propertice file
 config.properties
+pom.properties
 
 # Compiled metadata file
 .metadata
