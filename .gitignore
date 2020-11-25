@@ -3,7 +3,7 @@
 
 #ignore propertice file
 config.properties
-pom.properties
+Coffee/target/m2e-wtp/web-resources/META-INF/maven/com.yuhan/coffee/pom.properties
 
 # Compiled metadata file
 .metadata
