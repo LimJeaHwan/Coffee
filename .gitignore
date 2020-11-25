@@ -1,6 +1,9 @@
 /target/
 *.properties
 
+#ignore propertice file
+config.properties
+
 # Compiled metadata file
 .metadata
 
