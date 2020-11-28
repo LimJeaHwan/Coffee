@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%> 
 
 <div align="right">
 <button id="LoginBtn"><spring:message code="header.login" /></button>
@@ -32,31 +31,39 @@
 <div id="JoinModal" class="joinmodal">
 	<div class="joinmodal-content">
 		<span id="JoinClose">&times;</span>
-		<div class="inner_join">
-			<form action="/join.do" method="POST">
-				<div class="join_main">
-					<spring:message code="join.id"/><input type="text" name="m_id"/>
-				</div>
-				<div class="join_main">
-					<spring:message code="join.pwd"/><input type="password" name="m_pwd"/>
-				</div>
-				<div>
-					<spring:message code="join.sex"/>:
-					<label><input type="radio" name="m_sex" value="M" checked/><spring:message code="join.sex.male"/></label>
-					<label><input type="radio" name="m_sex" value="F"/><spring:message code="join.sex.female"/></label>
-				</div>
-				<div class="join_main">
-					<spring:message code="join.addr"/><input type="text" name="m_addr"/>
-				</div>
-				<div class="join_main">
-					<spring:message code="join.phone"/><input type="text" name="m_phone"/>
-				</div>
-				<div class="join_footer">
-					<input type="submit"/>
-				</div>
-			</form>
-				
-		</div>
+		<!-- 
+		<form:form>
+			<table>
+				<tr>
+					<td><spring:message code="join.id"/></td>
+					<td><form:input path="userId"/></td>
+					<td><font color="red"><form:errors path="userId" /></font></td>
+				</tr>
+				<tr>
+					<td><spring:message code="join.pwd"/></td>
+					<td><form:input type="password" path="userPw" /></td>
+					<td><font color="red"><form:errors path="userPw" /></font></td>
+				</tr>
+				<tr>
+					<td><spring:message code="join.sex"/>:</td>
+					<td><form:input type="radio" path="userSex" value="M" checked/></td>
+					<td><spring:message code="join.sex.male"/></td>
+					<td><form:input type="radio" path="userSex" value="F" checked/></td>
+					<td><spring:message code="join.sex.female"/></td>
+				</tr>
+				<tr>
+					<td><spring:message code="join.addr"/></td>
+					<td><form:input path="userAddr" /></td>
+					<td><font color="red"><form:errors path="userAddr" /></font></td>
+				</tr>
+				<tr>
+					<td><spring:message code="join.phone"/></td>
+					<td><form:input path="userPhone" /></td>
+					<td><font color="red"><form:errors path="userPhone" /></font></td>
+				</tr>
+			</table>
+		</form:form>
+		 -->
 	</div>
 </div>
 

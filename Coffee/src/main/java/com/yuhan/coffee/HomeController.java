@@ -15,8 +15,7 @@ import com.yuhan.service.Member_Service;
 @Controller
 public class HomeController {
 	
-	@Autowired
-	private Member_Service member_service;
+	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
@@ -37,14 +36,6 @@ public class HomeController {
 		return "menu/menu";
 	}
 	
-	@RequestMapping(value="/join.do",method = RequestMethod.POST)
-	public String Join(HttpServletRequest request) throws Exception
-	{
-		member_service.Join(request.getParameter("m_id") ,
-				request.getParameter("m_pwd") ,request.getParameter("m_sex")
-				,request.getParameter("m_phone") ,request.getParameter("m_addr"));
-		
-		return"redirect:/";
-	}
+	
 	
 }

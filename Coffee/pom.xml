@@ -163,7 +163,27 @@
      		<artifactId>mariadb-java-client</artifactId>
      		<version>2.3.0</version>
 		</dependency>
+		
+		<!-- validator -->
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		    <version>5.4.2.Final</version>
+		</dependency>
+		
+		<dependency>
+   			 <groupId>javax.validation</groupId>
+   			 <artifactId>validation-api</artifactId>
+  			 <version>2.0.1.Final</version>
+		</dependency>
+		
 		<!-- 스프링 시큐리티 라이브러리 -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
@@ -178,15 +198,17 @@
 		
 		<dependency>
 			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-core</artifactId>
+			<artifactId>spring-security-taglibs</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-taglibs</artifactId>
+			<artifactId>spring-security-test</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+
+
 		
 		<!-- AOP관련 라이브러리 -->
 		
@@ -202,6 +224,7 @@
 			<version>1.5.4</version>
 		</dependency>
 	</dependencies>
+	
     <build>
         <plugins>
             <plugin>

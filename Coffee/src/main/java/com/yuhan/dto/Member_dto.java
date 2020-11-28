@@ -1,13 +1,33 @@
 package com.yuhan.dto;
 
+import java.util.List;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 public class Member_dto {
 	private int m_no;
+	
+	@NotBlank
 	private String m_id;
+	
+	@NotBlank
 	private String m_pwd;
+	
 	private String m_phone;
 	private String m_addr;
+	
+	@NotBlank
 	private int m_point;
 	
+	private List<MemberAuth> authList;
+	
+	
+	public List<MemberAuth> getAuthList() {
+		return authList;
+	}
+	public void setAuthList(List<MemberAuth> authList) {
+		this.authList = authList;
+	}
 	
 	public int getM_no() {
 		return m_no;
@@ -46,11 +66,7 @@ public class Member_dto {
 		this.m_point = m_point;
 	}
 	
-	@Override
-	public String toString() {
-		return "Member_dto [m_no=" + m_no + ", m_id=" + m_id + ", m_pwd=" + m_pwd + ", m_phone=" + m_phone + ", m_addr="
-				+ m_addr + ", m_point=" + m_point + "]";
-	}
+	
 	
 	
 }
