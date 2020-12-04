@@ -9,7 +9,7 @@ public class MemberAuth implements Serializable {
 	private int userNo;
 	
 	private String auth;
-
+	
 	
 	public int getUserNo() {
 		return userNo;

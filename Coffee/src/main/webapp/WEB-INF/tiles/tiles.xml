@@ -20,6 +20,24 @@
 		<put-attribute name="content" value="/WEB-INF/views/menu/{1}.jsp" />
 	</definition>
 	
+	<!-- 회원가입(약관동의) 화면 -->
+	<definition name="member/register/step1" extends="main-template">
+		<put-attribute name="title" value="Coffee" />
+		<put-attribute name="content" value="/WEB-INF/views/member/register/step1.jsp" />
+	</definition>
+	
+	
+	<!-- 회원가입 화면 -->
+	<definition name="member/register/step2" extends="main-template">
+		<put-attribute name="title" value="Coffee" />
+		<put-attribute name="content" value="/WEB-INF/views/member/register/step2.jsp" />
+	</definition>
+	
+	<!--  -->
+	<definition name="member/register/step3" extends="main-template">
+		<put-attribute name="title" value="Coffee" />
+		<put-attribute name="content" value="/WEB-INF/views/member/register/step3.jsp" />
+	</definition>
 	
 	<!-- 회원 관리 페이지에 대한 레이아웃 템플릿 구성요소를  정의한다.-->
 	<definition name="user/*" extends="main-template">

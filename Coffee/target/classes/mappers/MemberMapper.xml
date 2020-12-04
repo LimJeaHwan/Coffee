@@ -5,8 +5,53 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
 <mapper namespace="MemberMapper">
 	
+	<!-- 이메일 확인 -->
+	<select id="selectByEmail" resultType="com.yuhan.dto.Member_dto">
+		<![CDATA[
+			SELECT
+				m_email,m_name
+			FROM
+				MEMBER
+			WHERE
+				m_email = #{email}
+		]]>
+	</select>
+	
+	
+	
+	<!-- 아이디 확인 -->
+	<select id="selectById" resultType="com.yuhan.dto.Member_dto">
+		<![CDATA[
+			SELECT
+				m_id,m_name
+			FROM
+				MEMBER
+			WHERE
+				m_id = #{m_id}
+		]]>
+	</select>
+	
 	<!-- 회원 가입 -->
-	<insert id="join" parameterType="Map">
-		INSERT INTO MEMBER(m_id,m_pwd,m_sex,m_phone,m_addr) VALUES(#{param1},#{param2},#{param3},#{param4},#{param5})
+	<insert id="register">
+		<![CDATA[
+			INSERT INTO MEMBER
+			(
+				m_id,
+				m_pwd,
+				m_name,
+				m_email,
+				m_addr
+			)
+			VALUES
+			(
+				#{m_id},
+				#{m_pwd},
+				#{m_name},
+				#{m_email},
+				#{m_addr}
+			)
+		]]>
 	</insert>
+	
+	
 </mapper>
