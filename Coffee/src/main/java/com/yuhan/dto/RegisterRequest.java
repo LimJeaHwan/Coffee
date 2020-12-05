@@ -23,11 +23,9 @@ public class RegisterRequest{
 	private String m_addr;
 	
 	@Column
-	@Size(min=4,max=12, message="비밀번호를 4~12자로 입력해주세요.")
 	private String m_pwd;
 	
 	@Column
-	@Size(min=4,max=12, message="비밀번호를 4~12자로 입력해주세요.")
 	private String check_m_pwd;
 	
 	

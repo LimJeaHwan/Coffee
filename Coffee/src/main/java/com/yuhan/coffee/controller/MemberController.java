@@ -2,6 +2,8 @@ package com.yuhan.coffee.controller;
 
 
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.yuhan.coffee.exception.AlreadyExistingEmailException;
 import com.yuhan.coffee.exception.AlreadyExistingIdException;
+import com.yuhan.dto.Member;
+import com.yuhan.dto.Member_dto;
 import com.yuhan.dto.RegisterRequest;
 import com.yuhan.service.Member_Service;
 import com.yuhan.util.RegisterRequestVaildator;
@@ -68,7 +72,10 @@ public class MemberController {
 		}
 		
 		try {
+			String inputPassword = regReq.getM_pwd();
+			regReq.setM_pwd(passwordEncoding.encode(inputPassword));
 			member_service.register(regReq);
+			
 		} catch (AlreadyExistingEmailException e) {
 			bindingResult.rejectValue("m_email", "duplicate","이미 가입된 이메일입니다.");
 			ModelAndView mv = new ModelAndView("member/register/step2");
@@ -83,5 +90,11 @@ public class MemberController {
 		return mv;
 	}
 	
-	
+	@RequestMapping("/member/admin/list")
+	public ModelAndView list() throws Exception{
+		List<Member> list = member_service.list();
+		ModelAndView mv = new ModelAndView("member/admin/list");
+		mv.addObject("list", list);
+		return mv;
+	}
 }

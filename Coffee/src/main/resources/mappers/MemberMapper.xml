@@ -5,6 +5,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
 <mapper namespace="MemberMapper">
 	
+	<select id="member_list" resultType="com.yuhan.dto.Member">
+	<![CDATA[
+		SELECT
+			m_no,
+			m_id,
+			m_pwd,
+			m_name,
+			m_email,
+			m_phone,
+			m_addr,
+			m_point,
+			m_reg_date
+		FROM
+			MEMBER
+		ORDER BY m_no DESC
+	]]>
+	</select>
+	
 	<!-- 이메일 확인 -->
 	<select id="selectByEmail" resultType="com.yuhan.dto.Member_dto">
 		<![CDATA[

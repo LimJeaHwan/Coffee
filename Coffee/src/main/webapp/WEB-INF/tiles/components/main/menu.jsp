@@ -15,6 +15,9 @@
 		<li>
 			<a href="/menu/list" class="menulist"><spring:message code="menu.shop" /></a>
 		</li>
+		<li>
+			<a href="/member/admin/list" class="menulist">회원관리</a>
+		</li>
 	</ul>
 </div>
 
