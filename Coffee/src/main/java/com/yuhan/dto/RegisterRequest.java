@@ -2,8 +2,6 @@ package com.yuhan.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -11,20 +9,17 @@ import javax.validation.constraints.Size;
 public class RegisterRequest{
 	
 	@Column
-	@Pattern(regexp="\\w(4,15)",message="아이디를 4~15자로 입력하세요.")
+	@Pattern(regexp="\\w{4,15}",message="아이디를 4~15자로 입력하세요.")
 	private String m_id;
 	
 	@Column
-	@Pattern(regexp="\\S(4,8)",message="이름을 공백없이 2~6자로 입력해주세요.")
+	@Pattern(regexp="\\S{2,8}", message="이름을 공백없이 2~6자로 입력해주세요.")
 	private String m_name;
 	
 	@Column
-	@NotEmpty(message="이름을 입력해주세요.")
-	@Email(message="이메일을 형식에 맞춰 올바르게 입력해주세요.")
 	private String m_email;
 	
 	@Column
-	@NotEmpty(message="주소를 입력해주세요.")
 	private String m_addr;
 	
 	@Column

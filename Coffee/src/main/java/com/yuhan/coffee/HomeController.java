@@ -2,14 +2,18 @@ package com.yuhan.coffee;
 
 
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.yuhan.dto.LoginCommand;
 import com.yuhan.service.Member_Service;
 
 @Controller
@@ -18,14 +22,23 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Model model) {
+	public ModelAndView home(LoginCommand loginCommand,@CookieValue(value="REMEMBER",required = false) Cookie rememberCookie,Model model) {
 		
-		String str = "가져온 데이터";
+		if(rememberCookie!= null) {
+			loginCommand.setId(rememberCookie.getValue());
+			loginCommand.setRemeberId(true);
+		}
+		
+		String str = "홈";
 		
 		model.addAttribute("data", str );
 		
-		return "home";
+		ModelAndView mv = new ModelAndView("home");
+		
+		return mv;
 	}
+	
+	
 	
 	@RequestMapping(value = "/menu/list", method = RequestMethod.GET)
 	public String menu(Model model)

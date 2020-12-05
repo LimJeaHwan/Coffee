@@ -46,7 +46,6 @@ appearance: auto;
                     <form:input type="text" class="form-control" placeholder="Addr" path="m_addr"/>
                     <div><form:errors path="m_addr"/></div>
                 </div>
-                
                 <button type="submit" class="btn btn-default">가입하기</button>
                 <button type="reset" class="btn btn-default">취소하기</button>
             </form:form>

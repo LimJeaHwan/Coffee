@@ -2,10 +2,13 @@ package com.yuhan.coffee.controller;
 
 
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.acls.model.AlreadyExistsException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,22 +52,30 @@ public class MemberController {
 
 	
 	@RequestMapping("/register/step3")
-	public ModelAndView step3(RegisterRequest regReq,Errors errors) throws Exception
+	public ModelAndView step3(@Valid RegisterRequest regReq,BindingResult bindingResult) throws Exception
 	{
-		new RegisterRequestVaildator().validate(regReq, errors);
-		if(errors.hasErrors()) {
+		
+		//@Valid검증
+		if(bindingResult.hasErrors()) {
 			ModelAndView mv = new ModelAndView("member/register/step2");
 			return mv;
 		}
+		boolean check = regReq.isPwEqualToCheckpwd();
+		if(!check) {
+			bindingResult.rejectValue("check_m_pwd", "noMatch","비밀번호를 확인해주세요.");
+			ModelAndView mv = new ModelAndView("member/register/step2");
+			return mv;
+		}
+		
 		try {
 			member_service.register(regReq);
 		} catch (AlreadyExistingEmailException e) {
-			errors.rejectValue("m_email", "duplicate","이미 가입된 이메일입니다.");
+			bindingResult.rejectValue("m_email", "duplicate","이미 가입된 이메일입니다.");
 			ModelAndView mv = new ModelAndView("member/register/step2");
 			return mv;
 		}
 		catch (AlreadyExistingIdException e) {
-			errors.rejectValue("m_id", "duplicate","이미 가입된 아이디입니다.");
+			bindingResult.rejectValue("m_id", "duplicate","이미 가입된 아이디입니다.");
 			ModelAndView mv = new ModelAndView("member/register/step2");
 			return mv;
 		}
@@ -73,21 +84,4 @@ public class MemberController {
 	}
 	
 	
-//	@RequestMapping(value="/join.do",method = RequestMethod.POST)
-//	public String Join(@Validated Member_dto member,BindingResult result,HttpServletRequest request) throws Exception
-//	{
-//		if(result.hasErrors()) {
-//			
-//			return"redirect:/";
-//		}
-//		
-//		String inputPassword = request.getParameter("m_pwd");
-//		passwordEncoding.encode(inputPassword);
-//		
-//		member_service.Join(request.getParameter("m_id") ,
-//				inputPassword ,request.getParameter("m_sex")
-//				,request.getParameter("m_phone") ,request.getParameter("m_addr"));
-//		
-//		return"redirect:/";
-//	}
 }
